@@ -10,7 +10,7 @@ print(plaintext_original)
 
 
 var plaintext = "" //for string that without operator symbols
-let key = "RITOCHKINA"
+let key = "RAY"
 
 //boshtuktardy jana ashykcha simvoldordu jokko chygaruu
 for i in plaintext_original{
@@ -105,6 +105,7 @@ for key in 1...keyRange{
     
     if I >= 0.060 && I <= 0.070{
         lengthOfVigeniereCipher = key
+        break
     }
 
     subGroupLetters.removeAll()
