@@ -10,7 +10,7 @@ print(plaintext_original)
 
 
 var plaintext = "" //for string that without operator symbols
-let key = "RAY"
+let key = "HE"
 
 //boshtuktardy jana ashykcha simvoldordu jokko chygaruu
 for i in plaintext_original{
@@ -18,6 +18,7 @@ for i in plaintext_original{
         plaintext.append(i.uppercased())
     }
 }
+
 
 
 let lengthKey = key.count
@@ -112,7 +113,6 @@ for key in 1...keyRange{
 }
 
 print("key length: \(lengthOfVigeniereCipher)")
-
 
 
 
