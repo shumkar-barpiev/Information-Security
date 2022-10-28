@@ -20,9 +20,6 @@ for i in plaintext_original{
 }
 
 
-// print(plaintext) //plain text after removing operator symbols
-
-
 let lengthKey = key.count
 let lengthPlaintext = plaintext.count
 let num = lengthPlaintext/lengthKey //type is integer butun san
@@ -72,7 +69,6 @@ print(encText)
 var groupLetters = [[String]]()
 var subGroupLetters = [String]()
 var lengthOfVigeniereCipher = 0 //result 
-
 
 var keyRange = 15 //kancha achkychka cheyin bojomoldoogo mumkun, azyryncha 15
 
