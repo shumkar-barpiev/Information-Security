@@ -6,15 +6,7 @@ let orderFrequencyLetters = ["E", "T", "A", "O", "N", "I", "S", "R", "H", "L", "
 
 var encryptedText = "ALPWXYLWAMVRJETIMVVQLPVRTYZOUIHVALLZLVFIUHVJHPVRNHPRUIYALWOEYIKEAEOMNLLRKWLEMSVHYIZXHYYEUXPRZMSMJSUZHPSIFMKKVXAIUXVXOIYIZXHYYEUXMMYWAEUHZIAXSIKHVAUAPXOENMUEUHASUMJOUSDMUKTYZODSBPKEZICIYFLPHXLEMXLVHFVYAJPJAILRTMUYAIZQBWRWOSDIKYWALEYMUKSIHXOIYWOSLWKIZMNRLVQIHRZEUHHTSEPHKVLWZWOMYXTYZOZXHRKWZMEJVSASUIIYAEZOHRFSUIDLVOUSDWOMTEUHALLCSPJSUJPVTXOEALLWLITWTYJLIMNKLVALHRALHXOIZEIWBVKPFFYSHHZLVYSHLVLHZXBVKCHRKXOMJOFSBHMMNYYIOIDSBPKYZIALPWMVHQLXVLPWHHCEUXHKLEUHWIYJVVTEUESTOETESIZXYYAAOIUIUXLVPRNEYSVQPRZXLEKLLXLRKWASIIHPTSZXZLLIWMZLPXZLLEKXPPAIKWSMNLAPFHVAUAOMSIDESOPRNEXYPGRLHRKWOERIOISPVEMXLVYIHGOMUKALLXHFSIHRKXOIUFBXAMUWLEAJYSTXOIYITYZOUILHZEMIDQPRBXLWIIMSYIOIDEYQZYWEUHSSVOZEAIHWLQBWREZOLHTIASKMURLVMSYEUINSAMHXPSUSMWVVAWLMNLAILRTSUXOWLEYPPIYMKMUJVVTIKLPQVJTCWPHRZXVAYMAIHFVSREISBXOMTEUHOIKMUJVVTIKQLSMLPWWPHRZRVXASJSVTLVHXLLPWYIQIJXPSUWAYUKIYAXOVBWAQLMUXVHVKNIKVLTVVAIYQVHLMMMOEKXVHVXOMZFVSRAPXOSBXOMTWVFLMATSIUXFSMTLSWPLLHHSIMXTYZOZGVQWEUMLWAIZPHQVXVVZEUHZTHGLBHRKAVYSHAESOHRKMHPYIHHFOUIDESSASMLPWMVPIUHZXOIPRAIYZPIDWMSSPVALHVRLEMXLVHRVXOIYQVRALHJAIYQVRALHRKXDSOYUHYIKSYWVTLSWPLMUXVXOIWVVGLWZMOIHVKJYSTQBWRSUGLENEPROIJESPLHTIHXOSTIHRKHLGSEYIKXOEAXOMUKZGVYSHNSVRLSMXDSDEFWOIJSBPKQHOLQFPPJLZLVFHPJMMJYSXVVOIJSBPKLLPWAPXOXOIWVVNLGAEMXLVHPSLLHIIDMSPPRNXVGVSWIYEAIPJOIJSBPKVLEKXOIISVOIIMSYIPXDIUXASWYIPPGHXPSUEUHJSBPKEKHMSVXUSAIZXOVVYNLVYAMALLAVYSHUSAQLHKPLAPXOQFXLBAFBXOIDEUXLHALLGOEUGLXVWLXALLVLGVVKWAVHMNLAMUWWSAWALHXOIKILQLHMEJXBESPFMUEJGBVHXLMBRKIYWASVHDLLVLXOMZAHWJSTMUKMVVQTYZODEUXLHHQLEZYYIVJJSUXYSSSCIYLPWSMMIZWASYCOIZESWVAPVLHSMRIHWJMLRAMZXHRKWBJMIYWTIUXHPHRNYPWOEAXOIZMNLASMEMEJXBESIYVVVHQPWAERIVRHTYMUXLHWENIDSBPKKUEDEALPWZSBPMSYICIYAOMSIPGVYSHBRKIYWAEUHOMZTLVZTLGAMCIPGVYSHUSAPLXOMTVLEKXOIISVOMSYTYSMIZWPSUESTLVZSUESEUHWVHGAMJESVLEZSUWTYZOOEZLPWCIYWPSUSMXOIAVBXOEUHPXZRVXHPDEFWALLZLVZMVRVJALLXYYALALHXALLVLWASMXOIDSYPKWOEYIZLLWWVVRLXVZLVISZIHRZALVZXVICIUXOIZMTTSIZXVJXYLWAMVRZEZALPSEUHALLXOSBKOXVJALPVACWENIMSVXUSAIZWLITIKESPASVVLESWAMSPDIHKYILHASOECIKMURLVJLHXHPSXOMZSBXHRKWLIDLLVLMAPLJAYZ"
 
-
-
-func getKeyLetter(_ cipherText: String) -> String{
-    
-    
-    
-    return ""
-}
-
+//MARK: - Find key length method
 func findKeyLength(_ encryptedTextArr: [Character]) -> Int{
     
     var subGroupLetters = [String]()
@@ -49,10 +41,6 @@ func findKeyLength(_ encryptedTextArr: [Character]) -> Int{
         }
         I = Double(floor(1000 * I) / 1000)
         
-    //  print("________________________________________________________________________________________")
-    //
-    //    print("Index coincidence: \(I) when key is equal: \(key)" )
-        
         if I >= 0.060 && I <= 0.070{
             lengthOfVigeniereCipher = key
             break
@@ -60,46 +48,15 @@ func findKeyLength(_ encryptedTextArr: [Character]) -> Int{
 
         subGroupLetters.removeAll()
     }
-
-//    print("key length: \(lengthOfVigeniereCipher)")
     
     return lengthOfVigeniereCipher
 }
 
-func findKeyWord(_ arr: [[String]]) -> String{
-    let ans = ""
-    var items = [String]()
-//    for i in arr{
-//        let letter = getKeyLetter(i)
-//        items.append(letter)
-//    }
-//    
-//    for i in items{
-//        ans += i
-    
-    
-    
-    
-    return ans
-}
-
-
-
-
-
-
-
-
-
 var encryptedTextArr = Array(encryptedText)
-
 var key = findKeyLength(encryptedTextArr)
-
-
 
 var groupLetters = [String]()
 var subGroupLetters = [Character]()
-
 
 var tempEncTextArr = encryptedTextArr
 let k = encryptedTextArr.count % key
@@ -114,10 +71,7 @@ for i in 0...key-1{
         subGroupLetters.append(Character(extendedGraphemeClusterLiteral: tempEncTextArr[j+key]))
         
     }
-//    print(subGroupLetters)
-      groupLetters.append(String(subGroupLetters))
-//    print(getKeyLetter(subGroupLetters))
-//    print(String(subGroupLetters))
+    groupLetters.append(String(subGroupLetters))
     subGroupLetters.removeAll()
 }
 
@@ -126,6 +80,8 @@ for i in 0...key-1{
 for i in 0...groupLetters.count - 1{
     groupLetters[i] = groupLetters[i].replacingOccurrences(of: ".", with: "", options: .literal, range: nil)
 }
+
+var keyWord = ""
 
 for i in groupLetters{
     let cipherTextArr = Array(i)
@@ -179,23 +135,53 @@ for i in groupLetters{
         }
         
         if maxVal >= 4{
-            print(counter)
-            print("key is :", alphabetEnglish[maxkey])
+//            print(counter)
+//            print("key letter is :", alphabetEnglish[maxkey])
+            keyWord += alphabetEnglish[maxkey]
             break
         }
     }
 }
 
+print("Key word is: ", keyWord)
+
+let lengthKey = key
+let lengthPlaintext = encryptedText.count
+let num = lengthPlaintext/lengthKey //type is integer butun san
+let num1 = lengthPlaintext%lengthKey //type is integer kaldyk san
+
+var arrLetters = Array(keyWord) // keyword letters
+var vigenereKey = ""
 
 
+for _ in Range(1...num){
+    vigenereKey += keyWord
+}
+
+if num1 >= 1{
+    for i in Range(0...num1-1){
+        vigenereKey += String(arrLetters[i])
+    }
+}
+
+var charVigenereKey = Array(vigenereKey)
 
 
+var decrypTextArr1 =  [Character]()
 
+for i in Range(0...encryptedTextArr.count-1){
+    let c = alphabetEnglish.firstIndex(of: String(encryptedTextArr[i]))!
+    let k = alphabetEnglish.firstIndex(of: String(charVigenereKey[i]))!
+    var D = (c-k)%26
+    
+    if D < 0{ //if D is negative
+        D += 26
+    }
+    
+    decrypTextArr1.append(contentsOf: alphabetEnglish[D])
+}
 
+var decrypText1 = String(decrypTextArr1) //getting string from character array
 
-
-
-
-
-
-
+print("\n\nDecryption Result :")
+print(decrypText1)
